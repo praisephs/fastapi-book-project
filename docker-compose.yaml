@@ -1,24 +1,3 @@
-# version: '3.8'
-
-# services:
-#   fastapi:
-#     build: .
-#     container_name: fastapi-app
-#     ports:
-#       - "8000:8000"
-#     depends_on:
-#       - nginx
-
-#   nginx:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile.nginx
-#     container_name: nginx-proxy
-#     ports:
-#       - "80:80"
-#     depends_on:
-#       - fastapi
-
 version: '3.8'
 
 services:
@@ -30,7 +9,9 @@ services:
     
 
   nginx:
-    build: ./nginx
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
     container_name: nginx_proxy
     ports:
       - "80:80"
