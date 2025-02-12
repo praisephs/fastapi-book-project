@@ -41,3 +41,6 @@ jobs:
             docker rm nginx_proxy || true
             docker run -d --name fastapi_app -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/fastapi-app:latest
             docker run -d --name nginx_proxy -p 80:80 ${{ secrets.DOCKER_USERNAME }}/nginx-proxy:latest
+
+
+#testing
