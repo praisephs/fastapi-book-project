@@ -23,7 +23,7 @@ jobs:
 
       - name: Build and Push Nginx Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx-proxy -f nginx/Dockerfile .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx-proxy -f Dockerfile.nginx .
           docker push ${{ secrets.DOCKER_USERNAME }}/nginx-proxy:latest
 
       - name: Deploy on Server
