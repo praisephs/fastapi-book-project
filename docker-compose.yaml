@@ -27,8 +27,7 @@ services:
     container_name: fastapi_app
     ports:
       - "8000:8000"
-    depends_on:
-      - nginx
+    
 
   nginx:
     build: ./nginx
