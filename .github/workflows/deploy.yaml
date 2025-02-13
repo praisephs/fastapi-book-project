@@ -24,13 +24,13 @@ jobs:
 
       - name: Build and Push FastAPI App
         run: |
-          docker build -t your-dockerhub-username/fastapi-app:latest .
-          docker push your-dockerhub-username/fastapi-app:latest
+          docker build -t praisephs/fastapi-app:latest .
+          docker push praisephs/fastapi-app:latest
 
       - name: Build and Push Nginx Proxy
         run: |
-          docker build -t your-dockerhub-username/nginx-proxy:latest -f Dockerfile.nginx .
-          docker push your-dockerhub-username/nginx-proxy:latest
+          docker build -t praisephs/nginx-proxy:latest -f Dockerfile.nginx .
+          docker push praisephs/nginx-proxy:latest
 
       - name: Deploy on Server
         uses: appleboy/ssh-action@master
@@ -39,8 +39,9 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/username/fastapi-book 
+            cd /home/${{ secrets.SERVER_USER }}/fastapi-book
             docker-compose down
             docker pull praisephs/fastapi-app:latest
             docker pull praisephs/nginx-proxy:latest
             docker-compose up -d --force-recreate
+
